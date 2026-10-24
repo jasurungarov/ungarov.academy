@@ -11,19 +11,20 @@ import useTranslate from '@/hooks/use-translate'
 function ReviewCard({ review }: { review: IReview }) {
 	const { lng } = useParams()
 	const t = useTranslate()
+	const fullName = review.user?.fullName ?? "Deleted user"
 
 	return (
 		<div className="mt-6 border-t border-t-primary">
 			<div className="mt-8 flex gap-2">
 				<Avatar>
-					<AvatarImage src={review.user.picture} />
+					<AvatarImage src={review.user?.picture} />
 					<AvatarFallback className="uppercase">
-						{review.user.fullName[0]}
+						{fullName[0] ?? "?"}
 					</AvatarFallback>
 				</Avatar>
 
 				<div className="flex flex-col">
-					<div>{review.user?.fullName}</div>
+					<div>{fullName}</div>
 					<div className="flex items-center gap-1">
 						<ReactStars value={review.rating} edit={false} color2="#DD6B20" />
 						<p className="text-sm opacity-50">

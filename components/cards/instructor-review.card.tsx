@@ -23,6 +23,7 @@ interface Props {
 function InstructorReviewCard({ review, isProfile, isAdmin }: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const pathname = usePathname();
+  const fullName = review.user?.fullName ?? "Deleted user"
 
   const handleFlag = async () => {
     setIsLoading(true);
@@ -30,7 +31,9 @@ function InstructorReviewCard({ review, isProfile, isAdmin }: Props) {
       setIsLoading(false),
     );
 
-    const not = sendNotification(review.user.clerkId, 'messageReviewFlagged')
+    const not = review.user?.clerkId
+    ? sendNotification(review.user.clerkId, 'messageReviewFlagged')
+    : Promise.resolve();
 
 		const promise = Promise.all([upd, not])
 
@@ -51,15 +54,15 @@ function InstructorReviewCard({ review, isProfile, isAdmin }: Props) {
       <div className="flex-1">
         <div className="flex gap-3">
           <Avatar>
-            <AvatarImage src={review.user.picture} />
+            <AvatarImage src={review.user?.picture} />
             <AvatarFallback className="uppercase">
-              {review.user.fullName[0]}
+              {fullName[0] ?? "?"}
             </AvatarFallback>
           </Avatar>
 
           <div className="flex flex-col">
             <div className="font-space-grotesk text-sm">
-              {review.user.fullName}{" "}
+              {fullName}{" "}
               <span className="text-xs text-muted-foreground">
                 {formatDistanceToNow(new Date(review.createdAt))} ago
               </span>
