@@ -35,7 +35,7 @@ function FeaturedCourses({ courses }: Props) {
   };
 
   return (
-    <div className="container mx-auto max-w-6xl py-12">
+    <div className="mx-auto max-w-6xl px-4 py-12">
       <div className="flex items-center justify-between max-md:flex-col max-md:items-start">
         <div className="flex flex-col space-y-1">
           <h1 className="font-space-grotesk text-3xl font-bold">

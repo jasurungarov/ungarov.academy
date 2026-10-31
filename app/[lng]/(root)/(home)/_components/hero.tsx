@@ -17,21 +17,21 @@ function Hero() {
 
   return (
     <>
-      <div className="container mx-auto grid min-h-[75vh] max-w-6xl grid-cols-2 gap-8 max-md:grid-cols-1 max-md:pt-32">
+      <div className="mx-auto grid min-h-[75vh] max-w-6xl grid-cols-2 gap-8 px-4 max-md:grid-cols-1 max-md:pt-32">
         <div className="flex flex-col space-y-4 self-center">
-          <h1 className="font-space-grotesk text-5xl font-bold">
+          <h1 className="font-space-grotesk text-4xl font-bold sm:text-5xl">
             {t("heroTitle")}{" "}
             <span className="text-primary">{t("heroTitleSpan")}</span>
           </h1>
-          <p className="text-muted-foreground">{t("heroDescription")}</p>
+          <p className="text-xs text-muted-foreground sm:text-sm">{t("heroDescription")}</p>
           <div className="flex gap-4">
             <Link href={"/courses"}>
-              <Button variant={"outline"} size={"lg"} rounded={"full"} className='glass'>
+              <Button variant={"outline"} size={"lg"} rounded={"full"} className="glass font-bold max-sm:h-9 max-sm:px-4 max-sm:text-sm">
                 {t("findCourses")}
               </Button>
             </Link>
             <Link href={"/courses"}>
-              <Button size={"lg"} rounded={"full"}>
+              <Button size={"lg"} rounded={"full"} className="font-bold max-sm:h-9 max-sm:px-4 max-sm:text-sm">
                 {t("blogs")}
               </Button>
             </Link>
@@ -57,8 +57,8 @@ function Hero() {
             {companies.map((Icon, idx) => (
               <CarouselItem
                 key={idx}
-                className="basis-1/3 md:basis-1/4 lg:basis-1/6">
-                <Icon className="h-24 w-full text-muted-foreground" />
+                className="basis-1/4 md:basis-1/4 lg:basis-1/6">
+                <Icon className="h-16 w-full text-muted-foreground sm:h-24" />
               </CarouselItem>
             ))}
           </CarouselContent>

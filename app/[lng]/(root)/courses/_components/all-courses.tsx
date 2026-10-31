@@ -44,7 +44,7 @@ function AllCourses({ result }: Props) {
   };
 
   return (
-    <div className="container mx-auto mt-12 max-w-6xl">
+    <div className="mx-auto mt-12 max-w-6xl px-4">
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <h2>
           {t("result1")}{" "}

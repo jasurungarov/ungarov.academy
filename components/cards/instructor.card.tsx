@@ -16,10 +16,10 @@ function InstructorCard({ instructor }: Props) {
             className="rounded-md"
           />
         </div>
-        <h1 className="font-space-grotesk text-2xl font-bold">
+        <h1 className="font-space-grotesk text-xl font-bold sm:text-2xl">
           {instructor.fullName}
         </h1>
-       <div className='font-medium text-muted-foreground'>
+       <div className='text-xs font-medium text-muted-foreground sm:text-sm'>
 					{instructor.job}
 				</div>
       </div>

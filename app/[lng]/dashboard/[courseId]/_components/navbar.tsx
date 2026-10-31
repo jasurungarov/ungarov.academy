@@ -17,7 +17,7 @@ function Navbar() {
   const { onOpen } = useReview();
   const t = useTranslate();
   return (
-    <div className="fixed inset-x-0 top-0 z-50 flex h-[10vh] w-full items-center justify-between border-b bg-gray-100 px-2 dark:bg-gray-900 lg:pl-80">
+    <div className="fixed inset-x-0 top-0 z-50 flex h-[10vh] w-full items-center justify-between border-b bg-gray-100 px-2 dark:bg-green-900 lg:pl-80">
       <div className="ml-2">
         <Logo />
       </div>

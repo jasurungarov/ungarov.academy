@@ -11,11 +11,11 @@ function NoResult({ title, description }: Props) {
       <Image
       src={'/assets/not-found.png'}
       alt='No result illustration'
-      width={270}
-      height={200}
+      width={470}
+      height={400}
       className='block object-contain'
       />
-      <h2 className='mt-8 font-space-grotesk text-2xl font-bold'>{title}</h2>
+      <h2 className='font-space-grotesk text-2xl font-bold'>{title}</h2>
       <p className='my-3.5 max-w-md text-center'>{description}</p>
     </div>
   )

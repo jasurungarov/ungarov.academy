@@ -50,8 +50,7 @@ function InstructorForm() {
         <p className="text-xs text-muted-foreground">
           {t("basicInformationDescription")}
         </p>
-
-        <FirstForm onHandler={onSubmit} />
+        <FirstForm onHandler={onSubmit} />     
       </>
     );
   };
@@ -143,7 +142,7 @@ function InstructorForm() {
   return (
     <Card className="relative bg-gradient-to-b from-background via-secondary to-background">
       {loading && <FillLoading />}
-      <CardContent className="py-2">
+      <CardContent className="py-6">
         {step !== 4 && (
           <>
             <Progress value={progress} />

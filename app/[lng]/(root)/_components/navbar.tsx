@@ -25,8 +25,9 @@ function Navbar() {
 
   
   return (
-    <div className="fixed inset-0 top-3 z-40 h-16 bg-background/70 backdrop-blur-xl">
-      <div className="container mx-auto flex h-full max-w-7xl items-center justify-between border-y">
+    <>
+    <div className="fixed inset-0 top-8 z-40 h-16 bg-background/70 backdrop-blur-xl sm:top-9">
+      <div className="mx-auto flex h-full max-w-7xl items-center justify-between border-y px-4 sm:px-6">
         <div className="flex items-center gap-4">
           <Logo />
           <div className="hidden items-center gap-3 border-l pl-2 md:flex">
@@ -86,6 +87,7 @@ function Navbar() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

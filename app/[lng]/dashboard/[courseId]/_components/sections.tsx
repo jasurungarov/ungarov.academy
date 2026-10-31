@@ -87,8 +87,8 @@ function SectionList(section: ISection) {
     <AccordionItem value={section._id} className="mt-1">
       <AccordionTrigger
         className={cn(
-          "text-left hover:no-underline hover:bg-gray-50 hover:dark:bg-gray-800 px-3 bg-gray-100 dark:bg-black/20",
-          sectionId === section._id && "bg-white dark:bg-gray-800",
+          "text-left hover:no-underline hover:bg-gray-50 hover:dark:bg-green-800 px-3 bg-gray-100 dark:bg-black/20",
+          sectionId === section._id && "bg-white dark:bg-green-800",
         )}>
         {section.title}
       </AccordionTrigger>

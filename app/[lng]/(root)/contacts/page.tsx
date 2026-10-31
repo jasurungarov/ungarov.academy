@@ -35,11 +35,11 @@ async function Page({ params: { lng } }: LngParams) {
 
 						<div className='mt-12 flex items-center gap-3'>
 							<Mail className='size-4' />
-							<a href='mailto:info@ungarov.ac' className='text-sm hover:underline dark:hover:text-blue-300'>info@ungarov.ac</a>
+							<a href='mailto:ungarov.academy@gmail.com' className='text-sm hover:underline dark:hover:text-blue-300'>ungarov.academy@gmail.com</a>
 						</div>
 						<div className='mt-2 flex items-center gap-3'>
 							<Phone className='size-4' />
-							<a href='tel:+98022964902' className='text-sm hover:underline dark:hover:text-blue-300'>+98 02 296 4902</a>
+							<a href='tel:+996707067776' className='text-sm hover:underline dark:hover:text-blue-300'>+996 707 067 776</a>
 						</div>
 					</div>
 

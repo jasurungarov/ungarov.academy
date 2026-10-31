@@ -1,5 +1,6 @@
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/theme.provider";
+import CarouselMessage from '@/components/shared/carousel'
 import { Toaster } from "@/components/ui/sonner";
 import { languages } from "@/i18n/settings";
 import { localization } from "@/lib/utils";
@@ -60,13 +61,14 @@ function RootLayout({ children, params: { lng } }: Props) {
       <html lang={lng} dir={dir(lng)} suppressHydrationWarning>
         <body
           className={`${roboto.variable} ${spaceGrotesk.variable} custom-scrollbar overflow-x-hidden`}
-          suppressHydrationWarning>
+          suppressHydrationWarning>            
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange>
             <Toaster position="top-center" />
+            <CarouselMessage />
             {children}
           </ThemeProvider>
         </body>
