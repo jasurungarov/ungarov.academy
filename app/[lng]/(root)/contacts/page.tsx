@@ -20,10 +20,10 @@ async function Page({ params: { lng } }: LngParams) {
 			<iframe
 				src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2067.564981138972!2d74.605031836283!3d42.8732992618102!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x389eb7c4b5aaaaab%3A0x79751aa41fde1080!2z0JjQvdGB0YLQuNGC0YPRgiDQuNC80LXQvdC4INCQ0YDQsNCx0LDQtdCy0LA!5e0!3m2!1sru!2skg!4v1769872411318!5m2!1sru!2skg'
 				loading='lazy'
-				className='h-96 w-full'
+				className='mt-2 h-96 w-full sm:mt-3'
 			/>
 
-			<div className='container mx-auto max-w-6xl'>
+			<div className='mx-auto max-w-6xl px-4 sm:px-6'>
 				<div className='mt-6 grid grid-cols-2 gap-4 max-md:grid-cols-1'>
 					<div className='flex flex-col'>
 						<h1 className='font-space-grotesk text-4xl font-bold'>

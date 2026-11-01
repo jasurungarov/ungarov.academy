@@ -24,7 +24,7 @@ function Footer() {
           <div className="flex flex-col space-y-3">
             <Separator className="mb-2 dark:bg-gray-500 md:hidden" />
             <h1 className="font-space-grotesk text-2xl sm:text-3xl">{t("pages")}</h1>
-            <div className="grid grid-cols-1 space-y-2">
+            <div className="grid grid-cols-1 space-y-3">
               {navLinks.map((item) => (
                 <Link
                   key={item.route}

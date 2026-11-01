@@ -45,7 +45,7 @@ function AllCourses({ result }: Props) {
 
   return (
     <div className="mx-auto mt-12 max-w-6xl px-4">
-      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      <div className="flex flex-col gap-2 sm:gap-4 md:flex-row md:items-center md:justify-between">
         <h2>
           {t("result1")}{" "}
           <span className="font-space-grotesk font-bold">{totalCourses}</span>{" "}
@@ -98,7 +98,7 @@ function AllCourses({ result }: Props) {
         </div>
       </div>
 
-      <div className="mt-2 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-2 grid grid-cols-1 gap-2 sm:gap-4 md:grid-cols-2 lg:grid-cols-3">
         {courses.map((course, index) => (
           <CourseCard key={index} {...course} />
         ))}

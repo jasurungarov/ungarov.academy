@@ -91,9 +91,9 @@ function BlogsExplorer({ result, showFeatured, page }: Props) {
   );
 
   return (
-    <div className="container mx-auto max-w-6xl">
-      <div className="relative mt-6 flex flex-col items-center gap-4">
-        <div className="relative flex w-full items-center justify-center gap-4">
+    <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="relative flex flex-col items-center gap-2 sm:gap-4">
+        <div className="relative flex w-full items-center justify-center gap-2 sm:gap-4">
           <span className="hidden h-px w-16 bg-gradient-to-r from-transparent to-green-500/40 sm:block" />
 
           <BlogSearch

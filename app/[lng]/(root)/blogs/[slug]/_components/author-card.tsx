@@ -12,7 +12,7 @@ function AuthorCard({ author }: Props) {
   const t = useTranslate();
 
   return (
-    <div className="container mx-auto max-w-6xl">
+    <div className="mx-auto max-w-6xl px-4 sm:px-6">
       <div className="mt-16 flex items-center gap-6 rounded-[24px] border border-white/10 bg-white/[0.03] p-6 backdrop-blur-md max-md:flex-col max-md:text-center">
         <Image
           src={author.picture}

@@ -7,7 +7,7 @@ interface Props {
 
 function CoverImage({ blog }: Props) {
   return (
-    <div className="container mx-auto max-w-6xl">
+    <div className="mx-auto max-w-6xl px-4 sm:px-6">
       <div className="relative mt-8 overflow-hidden rounded-[28px] border border-white/10">
         <Image
           src={blog.coverImage}

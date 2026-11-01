@@ -19,8 +19,8 @@ function BlogHeader({ blog }: Props) {
   const tagLabel = blogTag.find((tag) => tag.name === blog.tag)?.label;
 
   return (
-    <div className="container mx-auto max-w-6xl pt-10">
-      <div className="flex flex-wrap items-center gap-3">
+    <div className="mx-auto max-w-6xl px-4 pt-10 sm:px-6">
+      <div className="flex flex-wrap items-center gap-2 sm:gap-3">
         <Link
           href={`/blogs?category=${blog.category}`}
           className="rounded-full border border-amber-500/30 bg-amber-500/5 px-3 py-1 text-xs font-medium text-amber-500 transition-colors hover:bg-amber-500/10">

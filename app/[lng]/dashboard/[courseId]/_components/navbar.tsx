@@ -8,16 +8,16 @@ import {
   DropdownMenu,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useReview } from "@/hooks/use-review";
 import useTranslate from "@/hooks/use-translate";
 import { MoreVertical, Star } from "lucide-react";
 import DropdownContent from "./dropdown-content";
-import { useReview } from '@/hooks/use-review'
 
 function Navbar() {
   const { onOpen } = useReview();
   const t = useTranslate();
   return (
-    <div className="fixed inset-x-0 top-0 z-50 flex h-[10vh] w-full items-center justify-between border-b bg-gray-100 px-2 dark:bg-green-900 lg:pl-80">
+    <div className="fixed inset-x-0 top-8 z-50 flex h-[8vh] w-full items-center justify-between border-b bg-gray-100 px-2 dark:bg-secondary/80 sm:h-[10vh] lg:pl-80">
       <div className="ml-2">
         <Logo />
       </div>
@@ -26,8 +26,7 @@ function Navbar() {
         <div
           className="hidden cursor-pointer items-center gap-1 opacity-50 transition-all hover:opacity-100 md:flex"
           role="button"
-          onClick={onOpen}
-        >
+          onClick={onOpen}>
           <Star size={20} />
           <p>{t("evaluation")}</p>
         </div>

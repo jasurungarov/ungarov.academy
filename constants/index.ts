@@ -168,7 +168,7 @@ export const categories = [
 	{ icon: '/assets/categories/graphic-design.svg', label: 'Graphic Design' },
 	{ icon: '/assets/categories/photography.svg', label: 'Photography' },
 	{ icon: '/assets/categories/social-sciences.svg', label: 'Social Sciences' },
-	{ icon: '/assets/categories/art-humanities.svg', label: 'Art & Humanities' },
+	{ icon: '/assets/categories/foreign-languages.svg', label: 'Foreign Languages' },
 	{
 		icon: '/assets/categories/personal-development.svg',
 		label: 'Personal Development',
@@ -207,22 +207,22 @@ export const learningJourney = [
 	{
 		title: 'startTitle1',
 		excerpt: 'startDescription1',
-		image: '/assets/journey/rating.png',
+		image: '/assets/journey/rating.svg',
 	},
 	{
 		title: 'startTitle2',
 		excerpt: 'startDescription2',
-		image: '/assets/journey/science.png',
+		image: '/assets/journey/science.svg',
 	},
 	{
 		title: 'startTitle3',
 		excerpt: 'startDescription3',
-		image: '/assets/journey/online-learning.png',
+		image: '/assets/journey/online-learning.svg',
 	},
 	{
 		title: 'startTitle4',
 		excerpt: 'startDescription4',
-		image: '/assets/journey/certificate.png',
+		image: '/assets/journey/certificate.svg',
 	},
 ]
 

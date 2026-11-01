@@ -16,7 +16,7 @@ function RelatedPosts({ blogs }: Props) {
   if (!blogs.length) return null;
 
   return (
-    <div className="container mx-auto my-20 max-w-6xl">
+    <div className="mx-auto my-20 max-w-6xl px-4 sm:px-6">
       <h2 className="font-space-grotesk text-2xl font-bold">
         {t("relatedArticles")}
       </h2>

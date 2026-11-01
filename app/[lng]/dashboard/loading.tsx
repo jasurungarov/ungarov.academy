@@ -4,7 +4,7 @@ import { Loader2 } from 'lucide-react'
 
 function Loading() {
 	return (
-		<div className='flex'>
+		<div className='mt-8 flex'>
 			<Skeleton className='hidden h-[100vh] w-96 rounded-none bg-gray-200 dark:bg-gray-900 lg:block'>
 				<div className='pt-4'>
 					<Skeleton className='mx-auto h-[10vh] w-[90%]'>

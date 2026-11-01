@@ -15,7 +15,7 @@ function TopBar({ label, extra, description }: Props) {
 
 	return (
 		<>
-			<div className='mt-[6.5rem] h-12 bg-gradient-to-r from-secondary to-primary sm:mt-28'>
+			<div className='mt-[6.5rem] h-10 bg-gradient-to-r from-secondary to-primary sm:mt-28 sm:h-12'>
 				<div className='mx-auto flex w-full max-w-6xl items-center px-4'>
 					<div className='flex items-center'>
 						<Link
@@ -24,11 +24,11 @@ function TopBar({ label, extra, description }: Props) {
 						>
 							{t('home')}
 						</Link>
-						<Dot className='size-12 text-muted-foreground' />
+						<Dot className='size-10 text-muted-foreground sm:size-12' />
 						<p>{t(label)}</p>
 						{extra && (
 							<>
-								<Dot className='size-12 text-muted-foreground' />
+								<Dot className='size-10 text-muted-foreground sm:size-12' />
 								<p>{t(extra)}</p>
 							</>
 						)}

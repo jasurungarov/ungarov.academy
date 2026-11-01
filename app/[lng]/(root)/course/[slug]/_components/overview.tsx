@@ -68,29 +68,33 @@ function Overview(course: ICourse) {
           {t("courseContent")}
         </h2>
 
-        <div className="mt-2 flex flex-row flex-wrap gap-8">
+        <div className="mt-2 flex flex-row gap-8 sm:flex-wrap">
           <div className="flex flex-col">
-            <ListOrdered className="size-10 " />
-            <p className="font-space-grotesk text-xl font-bold">
+            <ListOrdered className="size-8 sm:size-10" />
+            <p className="font-space-grotesk text-sm font-bold sm:text-xl">
               {t("numberOfModules")}
             </p>
-            <div className="text-2xl font-medium">{course.totalSections}</div>
+            <div className="text-xl font-medium sm:text-2xl">
+              {course.totalSections}
+            </div>
           </div>
 
           <div className="flex flex-col">
-            <MonitorPlay className="size-10 " />
-            <p className="font-space-grotesk text-xl font-bold">
+            <MonitorPlay className="size-8 sm:size-10" />
+            <p className="font-space-grotesk text-sm font-bold sm:text-xl">
               {t("numberOfLessons")}
             </p>
-            <div className="text-2xl font-medium">{course.totalLessons}</div>
+            <div className="text-xl font-medium sm:text-2xl">
+              {course.totalLessons}
+            </div>
           </div>
 
           <div className="flex flex-col ">
-            <CalendarRange className="size-10 " />
-            <p className="font-space-grotesk text-xl font-bold">
+            <CalendarRange className="size-8 sm:size-10" />
+            <p className="font-space-grotesk text-sm font-bold sm:text-xl">
               {t("courseDuration")}
             </p>
-            <div className="text-2xl font-medium">
+            <div className="text-xl font-medium sm:text-2xl">
               {course.totalDuration.split(".")[0]} {t("hours")}{" "}
               {course.totalDuration.split(".")[1]} {t("minutes")}
             </div>

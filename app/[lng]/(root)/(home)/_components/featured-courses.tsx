@@ -54,7 +54,7 @@ function FeaturedCourses({ courses }: Props) {
               size={"sm"}
               variant={item.name === "all" ? "secondary" : "ghost"}
               className={cn(
-                "liquid-glass-sm shrink-0 whitespace-nowrap px-3 text-xs font-medium sm:px-4 sm:text-sm",
+                "liquid-glass-sm shrink-0 whitespace-nowrap px-2 text-xs font-medium sm:px-4 sm:text-sm",
               )}
               onClick={() => onUpdateParams(item.name)}>
               {t(item.label)}

@@ -10,7 +10,7 @@ function Layout({ params: { courseId, lng }, children }: Props) {
   return (
     <div className="relative">
       <Navbar />
-      <div className="flex">
+      <div className=" mt-8 flex">
         <Sidebar courseId={courseId} lng={lng} />
         <section className="flex min-h-screen flex-1 flex-col px-4 pb-6 pt-24 max-md:pb-14 sm:px-14 lg:mt-4">
           <div className="mx-auto w-full max-w-5xl lg:max-w-full">

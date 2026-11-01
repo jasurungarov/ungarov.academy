@@ -9,7 +9,7 @@ function BlogContent({ content }: Props) {
   const paragraphs = content.split(/\n\s*\n/).filter(Boolean);
 
   return (
-    <div className="container mx-auto max-w-6xl">
+    <div className="mx-auto max-w-6xl px-4 sm:px-6">
       <div className="relative mt-10 flex gap-12 max-md:flex-col-reverse">
         <aside className="flex md:w-14 md:flex-col">
           <div className="md:sticky md:top-28">

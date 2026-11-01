@@ -24,7 +24,7 @@ function Hero() {
             <span className="text-primary">{t("heroTitleSpan")}</span>
           </h1>
           <p className="text-xs text-muted-foreground sm:text-sm">{t("heroDescription")}</p>
-          <div className="flex gap-4">
+          <div className="flex gap-2 sm:gap-4">
             <Link href={"/courses"}>
               <Button variant={"outline"} size={"lg"} rounded={"full"} className="glass font-bold max-sm:h-9 max-sm:px-4 max-sm:text-sm">
                 {t("findCourses")}

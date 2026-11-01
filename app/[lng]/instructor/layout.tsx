@@ -1,19 +1,19 @@
-import { ChildProps } from '@/types'
-import Navbar from '../../../components/shared/navbar'
-import Sidebar from '../../../components/shared/sidebar'
+import { ChildProps } from "@/types";
+import Navbar from "../../../components/shared/navbar";
+import Sidebar from "../../../components/shared/sidebar";
 
 function Layout({ children }: ChildProps) {
-	return (
-		<>
-			<Navbar />
-			<Sidebar page='instructor' />
-			<main className='w-full p-4 pl-[320px] pt-[10vh]'>
-				<div className='size-full rounded-md bg-secondary px-4 pb-4'>
-					{children}
-				</div>
-			</main>
-		</>
-	)
+  return (
+    <>
+      <Navbar />
+      <Sidebar page="instructor" />
+      <main className="mt-8 w-full p-4 pl-[320px] pt-[10vh]">
+        <div className="size-full rounded-md bg-secondary px-4 pb-4">
+          {children}
+        </div>
+      </main>
+    </>
+  );
 }
 
-export default Layout
+export default Layout;

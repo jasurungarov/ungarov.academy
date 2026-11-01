@@ -25,7 +25,7 @@ function ShareBtns() {
   };
 
   return (
-    <div className="mt-6 flex flex-col items-center gap-2 md:items-start">
+    <div className="flex flex-col items-center gap-2 md:items-start">
       <p className="mb-1 text-xs font-medium uppercase tracking-wider text-muted-foreground">
         {t("share")} 
       </p>
@@ -35,8 +35,8 @@ function ShareBtns() {
             key={label}
             onClick={onShare}
             aria-label={label}
-            className="flex size-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-muted-foreground backdrop-blur-md transition-all duration-300 hover:border-yellow-500/30 hover:bg-yellow-500/10 hover:text-yellow-500">
-            <Icon className="size-4" />
+            className="flex size-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-muted-foreground backdrop-blur-md transition-all duration-300 hover:border-yellow-500/30 hover:bg-yellow-500/10 hover:text-yellow-500">
+            <Icon className="size-5" />
           </button>
         ))}
       </div>

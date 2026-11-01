@@ -40,8 +40,8 @@ async function Page({ params }: Props) {
 
 
   return (
-    <div className="pt-[8vh]">
-      <div className="container mx-auto max-w-6xl">
+    <div className="pt-[10vh]">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <BackButton />
       </div>
       <CoverImage blog={blog} />
