@@ -11,6 +11,7 @@ import PreviewImage from "./_components/preview-image";
 import Price from "./_components/price";
 import Sections from "./_components/sections";
 import SelectFields from "./_components/select-fields";
+import TelegramLink from "./_components/telegram-link";
 
 async function Page({ params }: { params: { courseId: string } }) {
   const courseJSON = await getCourseById(params.courseId);
@@ -43,6 +44,7 @@ async function Page({ params }: { params: { courseId: string } }) {
           <Information {...course} />
           <SelectFields {...course} />
           <Price {...course} />
+          {course.currentPrice === 0 && <TelegramLink {...course} />}
         </div>
 
         <div className="flex flex-col space-y-2">

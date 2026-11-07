@@ -13,6 +13,7 @@ import { calculateTotalDuration } from '@/lib/utils'
 import { revalidatePath } from 'next/cache'
 import { cache } from 'react'
 import { GetAllCoursesParams, GetCourseParams, GetPaginationParams, ICreateCourse } from './types'
+import { auth } from '@clerk/nextjs'
 
 
 export const createCourse = async (data: ICreateCourse, clerkId: string) => {
@@ -73,7 +74,7 @@ export const getCourses = async (params: GetCourseParams) => {
 export const getCourseById = async (id: String) => {
   try {
     await connectToDatabase()
-    const course = await Course.findById(id)
+		const course = await Course.findById(id).select('+telegramInviteLink')
     return course as ICourse
   } catch (error) {
     throw new Error('Something went wrong while getting course.')
@@ -495,4 +496,42 @@ export const getAdminCourses = async (params: GetPaginationParams) => {
 	} catch (error) {
 		throw new Error('Something went wrong while getting admin courses!')
 	}
+}
+
+// Bu ham vaqtinchalik telegramga yonaltrib turishlik uchungina #telegram
+export const joinFreeCourse = async (courseId: string) => {
+	const { userId } = auth()
+
+	await connectToDatabase()
+
+	const course = await Course.findOne({
+		_id: courseId,
+		published: true,
+	}).select('+telegramInviteLink currentPrice')
+
+	if (!course) throw new Error('Not found')
+	if (Number(course.currentPrice) !== 0) throw new Error('Course is not free')
+	if (!course.telegramInviteLink) throw new Error('Group link is not set')
+
+	// Kirgan foydalanuvchi bo'lsa, kursga yozib qo'yamiz (ixtiyoriy)
+	if (userId) {
+		const user = await User.findOne({ clerkId: userId }).select('_id')
+		if (user) {
+			const exists = await Purchase.exists({
+				user: user._id,
+				course: course._id,
+			})
+			if (!exists) {
+				const purchase = await Purchase.create({
+					user: user._id,
+					course: course._id,
+				})
+				await Course.findByIdAndUpdate(course._id, {
+					$addToSet: { purchases: purchase._id },
+				})
+			}
+		}
+	}
+
+	return { link: course.telegramInviteLink as string }
 }

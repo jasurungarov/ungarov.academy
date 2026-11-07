@@ -23,6 +23,9 @@ export interface ICourse {
 	rating: number
 	reviewCount: number
 	purchasedStudents: number
+	
+	// Bu ham vaqtinchalik telegramga yonaltrib turishlik uchungina #telegram
+	telegramInviteLink?: string
 }
 
 export interface ISection {

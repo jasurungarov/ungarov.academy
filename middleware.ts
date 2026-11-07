@@ -15,7 +15,7 @@ export default authMiddleware({
     "/:lng/blogs",
     "/:lng/blogs/:slug",
     "/:lng/consulting",
-    "/:lng/iqra-arabia",
+    "/:lng/agency",
     "/:lng/contacts",
     "/:lng/api/uploadthing",
     "/:lng/instructors",

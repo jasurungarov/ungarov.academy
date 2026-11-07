@@ -163,3 +163,23 @@ export const generateNumericId = (): string => {
 	}
 	return id
 }
+
+// Bu ham vaqtinchalik telegramga yonaltrib turishlik uchungina #telegram
+export function buildTelegramOrderUrl(opts: {
+	adminUsername: string
+	courseTitle: string
+	price: number
+	courseUrl: string
+	fullName?: string | null
+}) {
+	const lines = [
+		'Assalomu alaykum! Kursni sotib olmoqchiman.',
+		'',
+		`📚 Kurs: ${opts.courseTitle}`,
+		`💵 Narxi: ${opts.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}`,
+		...(opts.fullName ? [`👤 Ism: ${opts.fullName}`] : []),
+		`🔗 ${opts.courseUrl}`,
+	]
+
+	return `https://t.me/${opts.adminUsername}?text=${encodeURIComponent(lines.join('\n'))}`
+}

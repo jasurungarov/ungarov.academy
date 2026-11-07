@@ -30,7 +30,7 @@ function Hero() {
                 {t("findCourses")}
               </Button>
             </Link>
-            <Link href={"/courses"}>
+            <Link href={"/blogs"}>
               <Button size={"lg"} rounded={"full"} className="font-bold max-sm:h-9 max-sm:px-4 max-sm:text-sm">
                 {t("blogs")}
               </Button>

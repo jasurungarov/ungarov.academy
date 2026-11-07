@@ -1,137 +1,165 @@
-import { z } from 'zod'
+import { z } from "zod";
 
 export const contactSchema = z.object({
-	message: z.string().min(10),
-	email: z.string().email(),
-	name: z.string().min(3),
-})
+  message: z.string().min(10),
+  email: z.string().email(),
+  name: z.string().min(3),
+});
 
 export const courseSchema = z.object({
-	title: z.string().min(3),
-	description: z.string().min(10),
-	learning: z.string(),
-	requirements: z.string(),
-	level: z.string(),
-	language: z.string(),
-	category: z.string(),
-	oldPrice: z.string().min(0),
-	currentPrice: z.string().min(0),
-})
+  title: z.string().min(3),
+  description: z.string().min(10),
+  learning: z.string(),
+  requirements: z.string(),
+  level: z.string(),
+  language: z.string(),
+  category: z.string(),
+  oldPrice: z.string().min(0),
+  currentPrice: z.string().min(0),
+});
 
 export const courseFieldsSchema = z.object({
-	title: z.string().min(3),
-	slug: z.string().min(3),
-}) 
+  title: z.string().min(3),
+  slug: z.string().min(3),
+});
 
 export const descriptionSchema = z.object({
-	description: z.string().min(10),
-}) 
+  description: z.string().min(10),
+});
 
 export const informationSchema = z.object({
-	learning: z.string(),
-	requirements: z.string(),
-	tags: z.string().optional(),
-}) 
+  learning: z.string(),
+  requirements: z.string(),
+  tags: z.string().optional(),
+});
 
 export const selectFieldsSchema = z.object({
-	language: z.string(),
-	category: z.string(),
-	level: z.string(),
-})
+  language: z.string(),
+  category: z.string(),
+  level: z.string(),
+});
 
 export const priceSchema = z.object({
-	oldPrice: z.string(),
-	currentPrice: z.string(),
-})
+  oldPrice: z.string(),
+  currentPrice: z.string(),
+});
 
 export const previewImageSchema = z.object({
-	previewImage: z.string(),
-})
+  previewImage: z.string(),
+});
 
 export const sectionSchema = z.object({
-	title: z.string().min(3),
-})
+  title: z.string().min(3),
+});
 
-export const lessonSchema = z.object({
-	title: z.string().min(3),
-	videoUrl: z.string().url(),
-	content: z.string().optional(),
-	hours: z.string(),
-	minutes: z.string(),
-	seconds: z.string(),
-	free: z.boolean().default(false).optional(),
-})
+// export const lessonSchema = z.object({
+// 	title: z.string().min(3),
+// 	videoUrl: z.string().url(),
+// 	content: z.string().optional(),
+// 	hours: z.string(),
+// 	minutes: z.string(),
+// 	seconds: z.string(),
+// 	free: z.boolean().default(false).optional(),
+// })
+
+// Bu lessonSchema vaqtinchalik telegramga yonaltrib turishlik uchungina keyinchalik tepadagisi ishlatiladi
+export const lessonSchema = z
+  .object({
+    title: z.string().min(3),
+    videoUrl: z.string().optional(),
+    content: z.string().optional(),
+    hours: z.string(),
+    minutes: z.string(),
+    seconds: z.string(),
+    free: z.boolean().default(false).optional(),
+  })
+  .refine(
+    (data) =>
+      !data.free ||
+      (!!data.videoUrl && z.string().url().safeParse(data.videoUrl).success),
+    { message: "Demo (bepul) dars uchun video majburiy", path: ["videoUrl"] },
+  );
 
 export const profileSchema = z.object({
-	bio: z.string().min(10).optional(),
-	phone: z.string().optional(),
-	job: z.string().min(3).optional(),
-	website: z.string().url().optional(),
-	linkedin: z.string().url().optional(),
-	github: z.string().url().optional(),
-	youtube: z.string().url().optional(),
-})
+  bio: z.string().min(10).optional(),
+  phone: z.string().optional(),
+  job: z.string().min(3).optional(),
+  website: z.string().url().optional(),
+  linkedin: z.string().url().optional(),
+  github: z.string().url().optional(),
+  youtube: z.string().url().optional(),
+});
 
 export const reviewSchema = z.object({
-	data: z.string(),
-})
+  data: z.string(),
+});
 
 export const addressSchema = z.object({
-	fullName: z.string(),
-	address: z.string(),
-	city: z.string(),
-	zip: z.string(),
-})
+  fullName: z.string(),
+  address: z.string(),
+  city: z.string(),
+  zip: z.string(),
+});
 
 export const couponSchema = z.object({
-	code: z.string().min(3),
-})
+  code: z.string().min(3),
+});
 
 export const basicInstructorSchema = z.object({
-	name: z.string().min(3),
-	email: z.string().email(),
-	phone: z.string().min(7),
-})
+  name: z.string().min(3),
+  email: z.string().email(),
+  phone: z.string().min(7),
+});
 
 export const socialMediaSchema = z.object({
-	youtube: z.string().url(),
-	linkedin: z.string().url(),
-	github: z.string().url(),
-	website: z.string().url(),
-})
+  youtube: z.string().url(),
+  linkedin: z.string().url(),
+  github: z.string().url(),
+  website: z.string().url(),
+});
 
 export const bioSchema = z.object({
-	job: z.string().min(3),
-	bio: z.string().min(10),
-})
-
+  job: z.string().min(3),
+  bio: z.string().min(10),
+});
 
 export const blogSchema = z.object({
-	title: z.string().min(3),
-	description: z.string().min(10),
-	content: z.string().min(20),
-	category: z.string(),
-	tag: z.string(),
-})
- 
+  title: z.string().min(3),
+  description: z.string().min(10),
+  content: z.string().min(20),
+  category: z.string(),
+  tag: z.string(),
+});
+
 export const blogFieldsSchema = z.object({
-	title: z.string().min(3),
-	slug: z.string().min(3),
-})
- 
+  title: z.string().min(3),
+  slug: z.string().min(3),
+});
+
 export const blogDescriptionSchema = z.object({
-	description: z.string().min(10),
-})
- 
+  description: z.string().min(10),
+});
+
 export const blogContentSchema = z.object({
-	content: z.string().min(20),
-})
- 
+  content: z.string().min(20),
+});
+
 export const blogSelectFieldsSchema = z.object({
-	category: z.string(),
-	tag: z.string(),
-})
- 
+  category: z.string(),
+  tag: z.string(),
+});
+
 export const blogCoverImageSchema = z.object({
-	coverImage: z.string(),
-})
+  coverImage: z.string(),
+});
+
+// Bu ham vaqtinchalik telegramga yonaltrib turishlik uchungina #telegram
+export const telegramLinkSchema = z.object({
+  telegramInviteLink: z
+    .string()
+    .trim()
+    .refine(
+      (v) => v === "" || /^https:\/\/t\.me\/\S+$/.test(v),
+      "Havola https://t.me/... ko'rinishida bo'lishi kerak",
+    ),
+});

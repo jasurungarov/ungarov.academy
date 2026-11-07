@@ -16,9 +16,11 @@ const CourseSchema = new Schema({
   slug: String,
   tags: String,
   purchases: [{ type: Schema.Types.ObjectId, ref: 'Purchase' }],
+  telegramInviteLink: { type: String, select: false },
 },
   {timestamps: true}
 )
 
 const Course = models.Course || model ('Course', CourseSchema)
 export default Course
+

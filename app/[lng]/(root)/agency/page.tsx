@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 function Page() {
   return (
     <ComingSoon
-      title="iqroArabiaComingSoonTitle"
-      description="iqroArabiaComingSoonDescription"
+      title="agencyComingSoonTitle"
+      description="agencyComingSoonDescription"
     />
   );
 }

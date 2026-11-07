@@ -17,10 +17,8 @@ function Page() {
         description="becomeInstructorDescription"
       />
 
-      <div className="container mx-auto mt-12 min-h-[50vh] max-w-6xl">
-        <div className="grid grid-cols-2 gap-2">
-          <InstructorForm />
-          
+      <div className="mx-auto mt-12 min-h-[50vh] max-w-6xl px-4 sm:px-6">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <Image
             src={"/assets/instructor.png"}
             alt="Instructor"
@@ -28,6 +26,7 @@ function Page() {
             height={530}
             className="self-center justify-self-end"
           />
+          <InstructorForm />
         </div>
       </div>
     </>

@@ -36,7 +36,7 @@ export const navLinks = [
 	{ route: 'courses', name: 'navLink2', icon: ListVideo },
 	{ route: 'blogs', name: 'navLink3', icon: Rss },
 	{ route: 'consulting', name: 'navLink4', icon: Handshake },
-	{ route: 'iqra-arabia', name: 'navLink5', icon: BookOpen },
+	{ route: 'agency', name: 'navLink5', icon: BookOpen },
 	{ route: 'contacts', name: 'navLink6', icon: Contact },
 ]
 
