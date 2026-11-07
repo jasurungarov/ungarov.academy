@@ -38,6 +38,7 @@
     "date-fns": "^3.6.0",
     "embla-carousel-autoplay": "^8.0.0-rc23",
     "embla-carousel-react": "^8.0.0-rc23",
+    "falling-leaves": "^0.1.0",
     "graphql": "^16.8.1",
     "graphql-request": "^6.1.0",
     "html-react-parser": "^5.1.7",

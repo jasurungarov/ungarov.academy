@@ -236,7 +236,7 @@ function Description({ course, isPurchase }: Props) {
   };
 
   return (
-    <div className="rounded-md border bg-secondary/50 p-4 shadow-lg dark:shadow-white/20 lg:sticky lg:top-24 lg:p-6">
+    <div className="rounded-md border bg-secondary/50 p-4 shadow-lg dark:shadow-white/20 lg:sticky lg:top-28 lg:p-6">
       <div className="flex items-center justify-between font-space-grotesk">
         <div className="text-2xl font-bold">
           {isFree

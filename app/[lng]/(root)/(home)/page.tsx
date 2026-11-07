@@ -5,6 +5,7 @@ import FeaturedCourses from "./_components/featured-courses";
 import Hero from "./_components/hero";
 import Instructor from "./_components/instructor";
 import LearningJourney from "./_components/learning-journey";
+import LeavesLazy from './_components/leaves-lazy'
 
 async function Page() {
   const courses = await getFeaturedCourses();
@@ -12,6 +13,7 @@ async function Page() {
 
   return (
     <>
+      <LeavesLazy />
       <Hero />
       <FeaturedCourses courses={JSON.parse(JSON.stringify(courses))} />
       <Categories />
