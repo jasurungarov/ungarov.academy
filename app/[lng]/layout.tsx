@@ -33,19 +33,19 @@ export const metadata: Metadata = {
     "Ungarov Academy | Dasturlash, Til kurslari, Iqro Arabia va Konsalting xizmatlarini birlashtirgan ta`lim ekotizimi",
   description:
     "Ungarov Academy — dasturlash (IT), chet tillari, arab tili (Iqro Arabia) va xalqaro ta'lim bo'yicha konsalting xizmatlarini bitta joyda jamlagan zamonaviy ta'lim platformasi. Amaliyotga asoslangan kurslar, professional ustozlar va real natija.",
-  authors: [{ name: "Ungarov Academy", url: "https://www.ungarovacademy.uz" }],
+  authors: [{ name: "Ungarov Academy", url: "https://ungarovacademy.uz" }],
   icons: { icon: "/ungarov_logo.svg" },
   openGraph: {
     title: "Ungarov Academy | IT, Til va Xalqaro Ta`lim Ekotizimi",
     description:
       "Dasturlash, til kurslari, Iqro Arabia, arab tili va xalqaro ta'lim konsaltingi — Ungarov Academy'da bitta joyda.",
     type: "website",
-    url: "https://www.ungarovacademy.uz",
+    url: "https://ungarovacademy.uz",
     locale: "uz_UZ",
     images: "/og-image.png",
     countryName: "Uzbekistan",
     siteName: "Ungarov Academy",
-    emails: "ungarov.academy@gamil.com",
+    emails: "ungarov.academy@gmail.com",
   },
   keywords:
     "Ungarov Academy, Ungarov, dasturlash kurslari, IT kurslari, frontend kurs, backend kurs, Next.js kurs, dasturlash oʻrganish, til kurslari, arab tili kursi, Iqro Arabia, Qurʼon oʻqishni oʻrganish, xalqaro taʼlim konsalting, chet elda oʻqish, universitet uchun hujjat tarjimasi, Umm Al-Qura universiteti, Toshkentda IT kurslari, Oʻzbekistonda dasturlash taʼlimi",
