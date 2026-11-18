@@ -42,7 +42,14 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://ungarovacademy.uz",
     locale: "uz_UZ",
-    images: "/og-image.png",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Ungarov Academy",
+      },
+    ],
     countryName: "Uzbekistan",
     siteName: "Ungarov Academy",
     emails: "ungarov.academy@gmail.com",
