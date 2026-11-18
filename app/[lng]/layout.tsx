@@ -28,7 +28,7 @@ export async function generateStaticParams() {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.ungarovacademy.uz"),
+  metadataBase: new URL("https://ungarovacademy.uz"),
   title:
     "Ungarov Academy | Dasturlash, Til kurslari, Iqro Arabia va Konsalting xizmatlarini birlashtirgan ta`lim ekotizimi",
   description:
