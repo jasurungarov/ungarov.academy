@@ -6,11 +6,13 @@ import { navLinks } from "@/constants";
 import useTranslate from "@/hooks/use-translate";
 import { Mail, MapPin, PhoneCall } from "lucide-react";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { FaInstagram } from "react-icons/fa6";
 import { TbBrandTelegram } from "react-icons/tb";
 
 function Footer() {
   const t = useTranslate();
+  const { lng } = useParams();
 
   return (
     <div className="glass mt-4 pt-8 ">
@@ -18,12 +20,14 @@ function Footer() {
         <div className="grid grid-cols-1 gap-2 md:grid-cols-4">
           <div className="flex flex-col space-y-3 md:col-span-2">
             <Logo />
-            <p className='text-xs sm:text-sm'>{t("heroDescription")}</p>
+            <p className="text-xs sm:text-sm">{t("heroDescription")}</p>
           </div>
 
           <div className="flex flex-col space-y-3">
             <Separator className="mb-2 dark:bg-gray-500 md:hidden" />
-            <h1 className="font-space-grotesk text-2xl sm:text-3xl">{t("pages")}</h1>
+            <h1 className="font-space-grotesk text-2xl sm:text-3xl">
+              {t("pages")}
+            </h1>
             <div className="grid grid-cols-1 space-y-3">
               {navLinks.map((item) => (
                 <Link
@@ -98,13 +102,26 @@ function Footer() {
 
         <div className="pt-4">
           <Separator className="mb-2 dark:bg-gray-500" />
-          <p>
-            <Link
-              href={`/reserved`}
-              className="underline-offset-4 transition-colors hover:text-emerald-600 hover:underline">
+
+          <div className="flex flex-col gap-3 text-xs sm:flex-row sm:items-center sm:justify-between sm:text-sm">
+            <p>
               © {new Date().getFullYear()}. {t("copyright")}
-            </Link>
-          </p>
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4">
+              <Link
+                href={`/${lng}/privacy-policy`}
+                className="underline-offset-4 transition-colors hover:text-emerald-600 hover:underline">
+                {t("privacyPolicy")}
+              </Link>
+
+              <Link
+                href={`/${lng}/reserved`}
+                className="underline-offset-4 transition-colors hover:text-emerald-600 hover:underline">
+                {t("termsOfService")}
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </div>

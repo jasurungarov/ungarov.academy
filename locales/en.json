@@ -293,5 +293,22 @@
   "free": "Free",
   "startFree": "Start for free",
   "toGroup": "Go to group",
-  "watchDemo": "Press Play to watch the demo lesson"
+  "watchDemo": "Press Play to watch the demo lesson",
+  "privacyPolicy": "Privacy Policy",
+  "termsOfService": "Terms of Service",
+  "privacyIntro": "This Privacy Policy explains how your personal information is collected, used, stored and protected when you use the Ungarov Academy educational platform.",
+  "privacyS1Title": "Information We Collect",
+  "privacyS1Text": "When you register, we collect your name, email address, profile picture and account identifier. While using our services, we may also collect your phone number, professional information, course enrollments, purchases, reviews and learning progress.",
+  "privacyS2Title": "Google Authentication",
+  "privacyS2Text": "When you sign in with Google, we receive your name, email address, profile picture and account identifier through our authentication provider, Clerk. This information is used to create and authenticate your account and provide our platform services. We do not request access to your Gmail messages, Google Drive files or Google Calendar data. We do not sell Google user data or use it for advertising purposes. You may revoke granted permissions at https://myaccount.google.com/connections.",
+  "privacyS3Title": "How We Use Your Information",
+  "privacyS3Text": "Personal information is used to manage user accounts, provide educational services, process payments, track learning progress, provide technical support, maintain platform security and comply with legal obligations. Information published in public reviews and public instructor profiles may be visible to other users.",
+  "privacyS4Title": "Third-Party Services",
+  "privacyS4Text": "Our platform uses services including Clerk, MongoDB, Vercel, Stripe, UploadThing, Telegram and Vimeo. Information necessary to provide the relevant services may be shared with these providers. Information submitted through our contact form is delivered to our support team via Telegram. These providers may process information in other countries. Information may also be disclosed to competent authorities when required by law.",
+  "privacyS5Title": "Cookies and Data Security",
+  "privacyS5Text": "Our platform uses cookies to support authentication sessions, language preferences and website functionality. We use HTTPS and access control mechanisms to help protect personal information. However, no electronic system can guarantee absolute security.",
+  "privacyS6Title": "Data Retention and User Rights",
+  "privacyS6Text": "Personal information is retained for as long as necessary to provide our services and comply with legal obligations. You may request access to, correction of or deletion of your personal information. Revoking Google account permissions does not automatically delete information previously stored on the Academy platform.",
+  "privacyS7Title": "Policy Updates and Contact",
+  "privacyS7Text": "Ungarov Academy may update this Privacy Policy in response to changes in our services or applicable legislation. The current version will be published on this page. For privacy-related questions or requests concerning your personal information, please contact us using the email address below."
 }

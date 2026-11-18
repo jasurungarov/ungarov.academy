@@ -291,5 +291,22 @@
   "free": "Bepul",
   "startFree": "Bepul boshlash",
   "toGroup": "Guruhga o'tish",
-  "watchDemo": "Demo darsni ko'rish uchun Play tugmasini bosing"
+  "watchDemo": "Demo darsni ko'rish uchun Play tugmasini bosing",
+  "privacyPolicy": "Maxfiylik siyosati",
+  "termsOfService": "Foydalanish shartlari",
+  "privacyIntro": "Ushbu maxfiylik siyosati Ungarov Academy ta’lim platformasidan foydalanishingiz davomida shaxsiy ma’lumotlaringiz qanday yig‘ilishi, ishlatilishi, saqlanishi va himoya qilinishini tushuntiradi.",
+  "privacyS1Title": "Yig‘iladigan ma’lumotlar",
+  "privacyS1Text": "Ro‘yxatdan o‘tish jarayonida ismingiz, elektron pochta manzilingiz, profil rasmingiz va hisob identifikatoringiz olinadi. Xizmatlardan foydalanish davomida telefon raqamingiz, kasbiy ma’lumotlaringiz, kurslarga yozilish, xaridlar, sharhlar va o‘quv jarayoniga oid ma’lumotlar ham yig‘ilishi mumkin.",
+  "privacyS2Title": "Google orqali autentifikatsiya",
+  "privacyS2Text": "Google orqali tizimga kirganingizda Clerk autentifikatsiya xizmati orqali ismingiz, elektron pochta manzilingiz, profil rasmingiz va hisob identifikatoringiz olinadi. Ushbu ma’lumotlar hisobingizni yaratish, autentifikatsiya qilish va platforma xizmatlarini taqdim etish uchun ishlatiladi. Biz Gmail xabarlaringiz, Google Drive fayllaringiz yoki Google Calendar ma’lumotlaringizga kirishni so‘ramaymiz. Google orqali olingan ma’lumotlarni sotmaymiz va reklama maqsadlarida ishlatmaymiz. Berilgan ruxsatlarni https://myaccount.google.com/connections manzili orqali bekor qilishingiz mumkin.",
+  "privacyS3Title": "Ma’lumotlardan foydalanish",
+  "privacyS3Text": "Shaxsiy ma’lumotlar foydalanuvchi hisoblarini boshqarish, ta’lim xizmatlarini taqdim etish, to‘lovlarni qayta ishlash, o‘quv jarayonini kuzatish, texnik yordam ko‘rsatish, platforma xavfsizligini ta’minlash va qonuniy majburiyatlarni bajarish uchun ishlatiladi. Ommaviy sharhlar va ochiq o‘qituvchi profillaridagi ma’lumotlar boshqa foydalanuvchilarga ko‘rinishi mumkin.",
+  "privacyS4Title": "Uchinchi tomon xizmatlari",
+  "privacyS4Text": "Platformamiz Clerk, MongoDB, Vercel, Stripe, UploadThing, Telegram va Vimeo kabi xizmatlardan foydalanadi. Ushbu provayderlarga tegishli xizmatni ko‘rsatish uchun zarur ma’lumotlar uzatilishi mumkin. Aloqa formasi orqali yuborilgan ma’lumotlar Telegram orqali yordam jamoamizga yetkaziladi. Mazkur xizmatlar ma’lumotlarni boshqa mamlakatlarda ham qayta ishlashi mumkin. Qonun talab qilgan hollarda ma’lumotlar vakolatli organlarga taqdim etilishi mumkin.",
+  "privacyS5Title": "Cookie fayllari va ma’lumotlar xavfsizligi",
+  "privacyS5Text": "Platformamiz autentifikatsiya sessiyalari, til sozlamalari va sayt funksiyalarini ta’minlash uchun cookie fayllaridan foydalanadi. Shaxsiy ma’lumotlarni himoya qilish maqsadida HTTPS va kirishni nazorat qilish mexanizmlaridan foydalanamiz. Biroq hech bir elektron tizim mutlaq xavfsizlikni kafolatlay olmaydi.",
+  "privacyS6Title": "Ma’lumotlarni saqlash va foydalanuvchi huquqlari",
+  "privacyS6Text": "Shaxsiy ma’lumotlar xizmatlarni taqdim etish va qonuniy majburiyatlarni bajarish uchun zarur muddat davomida saqlanadi. Siz shaxsiy ma’lumotlaringizga kirish, ularni tuzatish yoki o‘chirish bo‘yicha murojaat yuborishingiz mumkin. Google hisobiga berilgan ruxsatni bekor qilish akademiya platformasida avval saqlangan ma’lumotlarni avtomatik ravishda o‘chirmaydi.",
+  "privacyS7Title": "Siyosatdagi o‘zgarishlar va aloqa",
+  "privacyS7Text": "Ungarov Academy xizmatlar va qonunchilikdagi o‘zgarishlarga muvofiq ushbu maxfiylik siyosatini yangilashi mumkin. Amaldagi versiya ushbu sahifada e’lon qilinadi. Maxfiylik siyosatiga oid savollar yoki shaxsiy ma’lumotlaringiz bo‘yicha murojaatlar uchun quyidagi elektron pochta manzili orqali biz bilan bog‘lanishingiz mumkin."
 }

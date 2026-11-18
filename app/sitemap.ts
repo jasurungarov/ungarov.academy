@@ -17,6 +17,7 @@ const STATIC_ROUTES = [
   "/contacts",
   "/instructors",
   "/reserved",
+  "/privacy-policy",
 ];
 
 const COURSE_LOCALES: Record<string, string> = {

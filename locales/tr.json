@@ -291,5 +291,22 @@
   "free": "Ücretsiz",
   "startFree": "Ücretsiz başla",
   "toGroup": "Gruba git",
-  "watchDemo": "Demo dersi izlemek için Play'e basın"
+  "watchDemo": "Demo dersi izlemek için Play'e basın",
+  "privacyPolicy": "Gizlilik Politikası",
+  "termsOfService": "Kullanım Koşulları",
+  "privacyIntro": "Bu Gizlilik Politikası, Ungarov Academy eğitim platformunu kullandığınızda kişisel bilgilerinizin nasıl toplandığını, kullanıldığını, saklandığını ve korunduğunu açıklar.",
+  "privacyS1Title": "Toplanan Bilgiler",
+  "privacyS1Text": "Kayıt sırasında adınız, e-posta adresiniz, profil fotoğrafınız ve hesap tanımlayıcınız alınır. Hizmetlerimizi kullanırken telefon numaranız, mesleki bilgileriniz, kurs kayıtlarınız, satın alma işlemleriniz, değerlendirmeleriniz ve öğrenme ilerlemeniz hakkında bilgiler de toplanabilir.",
+  "privacyS2Title": "Google ile Kimlik Doğrulama",
+  "privacyS2Text": "Google ile giriş yaptığınızda kimlik doğrulama sağlayıcımız Clerk aracılığıyla adınız, e-posta adresiniz, profil fotoğrafınız ve hesap tanımlayıcınız alınır. Bu bilgiler hesabınızı oluşturmak, kimliğinizi doğrulamak ve platform hizmetlerini sunmak için kullanılır. Gmail mesajlarınıza, Google Drive dosyalarınıza veya Google Calendar verilerinize erişim talep etmeyiz. Google kullanıcı verilerini satmayız ve reklam amacıyla kullanmayız. Verilen izinleri https://myaccount.google.com/connections adresinden iptal edebilirsiniz.",
+  "privacyS3Title": "Kişisel Bilgilerin Kullanımı",
+  "privacyS3Text": "Kişisel bilgiler kullanıcı hesaplarının yönetilmesi, eğitim hizmetlerinin sunulması, ödemelerin işlenmesi, öğrenme ilerlemesinin takip edilmesi, teknik destek sağlanması, platform güvenliğinin korunması ve yasal yükümlülüklerin yerine getirilmesi için kullanılır. Herkese açık değerlendirmelerde ve eğitmen profillerinde yayımlanan bilgiler diğer kullanıcılar tarafından görülebilir.",
+  "privacyS4Title": "Üçüncü Taraf Hizmetleri",
+  "privacyS4Text": "Platformumuz Clerk, MongoDB, Vercel, Stripe, UploadThing, Telegram ve Vimeo gibi hizmetleri kullanır. İlgili hizmetlerin sunulması için gerekli bilgiler bu sağlayıcılarla paylaşılabilir. İletişim formu üzerinden gönderilen bilgiler Telegram aracılığıyla destek ekibimize iletilir. Bu sağlayıcılar bilgileri başka ülkelerde de işleyebilir. Yasaların gerektirdiği durumlarda bilgiler yetkili makamlara sunulabilir.",
+  "privacyS5Title": "Çerezler ve Veri Güvenliği",
+  "privacyS5Text": "Platformumuz kimlik doğrulama oturumlarını, dil tercihlerini ve site işlevlerini desteklemek için çerezler kullanır. Kişisel bilgileri korumak amacıyla HTTPS ve erişim kontrol mekanizmaları kullanılır. Ancak hiçbir elektronik sistem mutlak güvenliği garanti edemez.",
+  "privacyS6Title": "Verilerin Saklanması ve Kullanıcı Hakları",
+  "privacyS6Text": "Kişisel bilgiler, hizmetlerin sunulması ve yasal yükümlülüklerin yerine getirilmesi için gerekli süre boyunca saklanır. Kişisel bilgilerinize erişim, düzeltme veya silme talebinde bulunabilirsiniz. Google hesabına verilen izinlerin iptal edilmesi, Akademi platformunda daha önce saklanan bilgileri otomatik olarak silmez.",
+  "privacyS7Title": "Politika Güncellemeleri ve İletişim",
+  "privacyS7Text": "Ungarov Academy, hizmetlerdeki veya ilgili mevzuattaki değişikliklere bağlı olarak bu Gizlilik Politikasını güncelleyebilir. Güncel sürüm bu sayfada yayımlanır. Gizlilik politikası veya kişisel bilgilerinizle ilgili sorularınız ve talepleriniz için aşağıdaki e-posta adresinden bizimle iletişime geçebilirsiniz."
 }
