@@ -2,6 +2,7 @@ import { ThemeProvider } from "@/components/providers/theme.provider";
 import CarouselMessage from "@/components/shared/carousel";
 import { Toaster } from "@/components/ui/sonner";
 import { languages } from "@/i18n/settings";
+import { createSeoMetadata, SITE_URL } from "@/lib/seo";
 import { localization } from "@/lib/utils";
 import { ChildProps } from "@/types";
 import { ClerkProvider } from "@clerk/nextjs";
@@ -27,36 +28,39 @@ export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }));
 }
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://ungarovacademy.uz"),
-  title:
-    "Ungarov Academy | Dasturlash, Til kurslari, Iqro Arabia va Konsalting xizmatlarini birlashtirgan ta`lim ekotizimi",
-  description:
-    "Ungarov Academy — dasturlash (IT), chet tillari, arab tili (Iqro Arabia) va xalqaro ta'lim bo'yicha konsalting xizmatlarini bitta joyda jamlagan zamonaviy ta'lim platformasi. Amaliyotga asoslangan kurslar, professional ustozlar va real natija.",
-  authors: [{ name: "Ungarov Academy", url: "https://ungarovacademy.uz" }],
-  icons: { icon: "/ungarov_logo.svg" },
-  openGraph: {
-    title: "Ungarov Academy | IT, Til va Xalqaro Ta`lim Ekotizimi",
-    description:
-      "Dasturlash, til kurslari, Iqro Arabia, arab tili va xalqaro ta'lim konsaltingi — Ungarov Academy'da bitta joyda.",
-    type: "website",
-    url: "https://ungarovacademy.uz",
-    locale: "uz_UZ",
-    images: [
+export async function generateMetadata({
+  params,
+}: {
+  params: { lng: string };
+}): Promise<Metadata> {
+  const metadata = await createSeoMetadata(
+    params.lng,
+    "seoHomeTitle",
+    "seoHomeDescription",
+  );
+
+  return {
+    ...metadata,
+
+    metadataBase: new URL(SITE_URL),
+
+    authors: [
       {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Ungarov Academy",
+        name: "Ungarov Academy",
+        url: SITE_URL,
       },
     ],
-    countryName: "Uzbekistan",
-    siteName: "Ungarov Academy",
-    emails: "ungarov.academy@gmail.com",
-  },
-  keywords:
-    "Ungarov Academy, Ungarov, dasturlash kurslari, IT kurslari, frontend kurs, backend kurs, Next.js kurs, dasturlash oʻrganish, til kurslari, arab tili kursi, Iqro Arabia, Qurʼon oʻqishni oʻrganish, xalqaro taʼlim konsalting, chet elda oʻqish, universitet uchun hujjat tarjimasi, Umm Al-Qura universiteti, Toshkentda IT kurslari, Oʻzbekistonda dasturlash taʼlimi",
-};
+
+    creator: "Ungarov Academy",
+    publisher: "Ungarov Academy",
+
+    applicationName: "Ungarov Academy",
+
+    icons: {
+      icon: "/ungarov_logo.svg",
+    },
+  };
+}
 
 interface Props extends ChildProps {
   params: { lng: string };

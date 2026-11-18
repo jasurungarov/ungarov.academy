@@ -4,10 +4,25 @@ import createMiddleware from "next-intl/middleware";
 const intlMiddleware = createMiddleware({
   locales: ["en", "ru", "uz", "tr", "ky"],
   defaultLocale: "en",
+  alternateLinks: true,
+});
+
+const contentMiddleware = createMiddleware({
+  locales: ["en", "ru", "uz", "tr", "ky"],
+  defaultLocale: "en",
+  alternateLinks: false,
 });
 
 export default authMiddleware({
-  beforeAuth: (req) => intlMiddleware(req),
+  beforeAuth: (req) => {
+    const isContentPage =
+      /^\/(?:(?:en|ru|uz|tr|ky)\/)?(?:course|blogs|instructors)\/[^/]+\/?$/.test(
+        req.nextUrl.pathname,
+      );
+
+    return isContentPage ? contentMiddleware(req) : intlMiddleware(req);
+  },
+
   publicRoutes: [
     "/:lng",
     "/:lng/courses",
@@ -24,8 +39,9 @@ export default authMiddleware({
     "/:lng/sign-in",
     "/:lng/sign-up",
     "/:lng/reserved",
-    "/:lng/privacy-policy"
+    "/:lng/privacy-policy",
   ],
+
   ignoredRoutes: ["/en/api/webhook"],
 });
 

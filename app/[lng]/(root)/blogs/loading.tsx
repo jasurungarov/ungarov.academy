@@ -4,7 +4,7 @@ import BlogCardSkeleton from "./_components/skeletons/blog-card-skeleton";
 
 function Loading() {
   return (
-    <div className="pt-[8vh]">
+    <div className="pt-[12vh]">
       <div className="container mx-auto max-w-6xl">
         {/* TopBar placeholder */}
         <div className="flex flex-col gap-2 py-8">
