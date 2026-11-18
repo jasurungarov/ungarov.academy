@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
 import { translation } from "@/i18n/server";
 import { fallbackLng, languages } from "@/i18n/settings";
+import type { Metadata } from "next";
 
 const BASE_URL = "https://ungarovacademy.uz";
 const CONTACT_EMAIL = "ungarov.academy@gmail.com";
@@ -20,12 +20,8 @@ interface Props {
   params: { lng: string };
 }
 
-export async function generateMetadata({
-  params,
-}: Props): Promise<Metadata> {
-  const lng = languages.includes(params.lng)
-    ? params.lng
-    : fallbackLng;
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const lng = languages.includes(params.lng) ? params.lng : fallbackLng;
 
   const { t } = await translation(lng);
 
@@ -40,10 +36,7 @@ export async function generateMetadata({
       canonical: url,
       languages: {
         ...Object.fromEntries(
-          languages.map((lang) => [
-            lang,
-            `${BASE_URL}/${lang}/privacy-policy`,
-          ])
+          languages.map((lang) => [lang, `${BASE_URL}/${lang}/privacy-policy`]),
         ),
         "x-default": `${BASE_URL}/privacy-policy`,
       },
@@ -67,12 +60,8 @@ export async function generateMetadata({
   };
 }
 
-export default async function PrivacyPolicyPage({
-  params,
-}: Props) {
-  const lng = languages.includes(params.lng)
-    ? params.lng
-    : fallbackLng;
+export default async function PrivacyPolicyPage({ params }: Props) {
+  const lng = languages.includes(params.lng) ? params.lng : fallbackLng;
 
   const { t } = await translation(lng);
 
@@ -124,6 +113,11 @@ export default async function PrivacyPolicyPage({
                   paragraph
                 )}
               </p>
+              {id === 5 && (
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:pl-11 sm:text-base">
+                  {t("privacyAnalyticsText")}
+                </p>
+              )}
             </section>
           );
         })}

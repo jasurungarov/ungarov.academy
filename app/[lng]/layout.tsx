@@ -1,5 +1,6 @@
 import { ThemeProvider } from "@/components/providers/theme.provider";
 import CarouselMessage from "@/components/shared/carousel";
+import CookieConsent from "@/components/shared/cookie-consent";
 import { Toaster } from "@/components/ui/sonner";
 import { languages } from "@/i18n/settings";
 import { createSeoMetadata, SITE_URL } from "@/lib/seo";
@@ -94,6 +95,7 @@ function RootLayout({ children, params: { lng } }: Props) {
             <Toaster position="top-center" />
             <CarouselMessage />
             {children}
+            <CookieConsent />
           </ThemeProvider>
         </body>
       </html>

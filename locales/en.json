@@ -312,5 +312,11 @@
   "privacyS7Title": "Policy Updates and Contact",
   "privacyS7Text": "Ungarov Academy may update this Privacy Policy in response to changes in our services or applicable legislation. The current version will be published on this page. For privacy-related questions or requests concerning your personal information, please contact us using the email address below.",
   "seoHomeTitle": "IT, Language Courses and International Education",
-  "seoHomeDescription": "Ungarov Academy is a modern educational ecosystem combining programming courses, foreign languages, Iqro Arabia and international education consulting."
+  "seoHomeDescription": "Ungarov Academy is a modern educational ecosystem combining programming courses, foreign languages, Iqro Arabia and international education consulting.",
+  "cookieTitle": "Cookie Preferences",
+  "cookieDescription": "We use optional analytics cookies to improve our website and understand visitor activity. The choice is yours.",
+  "cookieAccept": "Accept",
+  "cookieReject": "Reject",
+  "cookieSettings": "Cookie Preferences",
+  "privacyAnalyticsText": "Our platform uses Google Analytics 4 based on your consent. This service may process statistical information about visits, devices, browsers and interactions with website pages. Analytics cookies are optional and are not used for advertising purposes. Your preference is stored in your browser's local storage. You may change or withdraw your consent at any time through the cookie preferences."
 }
