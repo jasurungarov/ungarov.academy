@@ -58,7 +58,23 @@ export async function generateMetadata({
     applicationName: "Ungarov Academy",
 
     icons: {
-      icon: "/ungarov_logo.svg",
+      icon: [
+        {
+          url: "/favicon.ico",
+          sizes: "any",
+          type: "image/x-icon",
+        },
+        {
+          url: "/ungarov-favicon-192.png",
+          sizes: "192x192",
+          type: "image/png",
+        },
+        {
+          url: "/ungarov-favicon-512.png",
+          sizes: "512x512",
+          type: "image/png",
+        },
+      ],
     },
   };
 }
