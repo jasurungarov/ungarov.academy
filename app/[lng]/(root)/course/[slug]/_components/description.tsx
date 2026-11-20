@@ -169,6 +169,7 @@ import { addWishlistCourse, joinFreeCourse } from "@/actions/course.action";
 import { ICourse } from "@/app.types";
 import { Button } from "@/components/ui/button";
 import useTranslate from "@/hooks/use-translate";
+import { trackCourseEvent } from "@/lib/analytics";
 import { buildTelegramOrderUrl } from "@/lib/utils";
 import { useAuth, useUser } from "@clerk/nextjs";
 import {
@@ -210,7 +211,10 @@ function Description({ course, isPurchase }: Props) {
   });
 
   const onJoin = async () => {
+    trackCourseEvent("free_course_join_click", course);
+
     setIsLoading(true);
+
     try {
       const { link } = await joinFreeCourse(course._id);
       window.location.href = link;
@@ -270,7 +274,11 @@ function Description({ course, isPurchase }: Props) {
         </Button>
       ) : (
         <Button size={"lg"} className="relative mt-2 w-full font-bold" asChild>
-          <a href={telegramUrl} target="_blank" rel="noopener noreferrer">
+          <a
+            href={telegramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackCourseEvent("telegram_click", course)}>
             {t("buyNow")}
           </a>
         </Button>

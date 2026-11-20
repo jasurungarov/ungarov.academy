@@ -4,6 +4,7 @@ import useTranslate from "@/hooks/use-translate";
 import { contactSchema } from "@/lib/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Send } from "lucide-react";
+import { useParams } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -18,10 +19,12 @@ import {
 } from "../ui/form";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
+import { trackContactLead } from "@/lib/analytics";
 
 function ContactForm() {
   const [isLoading, setIsLoading] = useState(false);
   const t = useTranslate();
+  const { lng } = useParams<{ lng: string }>();
 
   const form = useForm<z.infer<typeof contactSchema>>({
     resolver: zodResolver(contactSchema),
@@ -32,35 +35,41 @@ function ContactForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof contactSchema>) {
+  async function onSubmit(values: z.infer<typeof contactSchema>) {
     setIsLoading(true);
-    const telegramBotId = process.env.NEXT_PUBLIC_TELEGRAM_BOT_API!;
-    const telegramChatId = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID!;
 
-    const promise = fetch(
-      `https://api.telegram.org/bot${telegramBotId}/sendMessage`,
-      {
+    const promise = (async () => {
+     const response = await fetch(`/${lng}/api/contact`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "cache-control": "no-cache",
         },
-        body: JSON.stringify({
-          chat_id: telegramChatId,
-          text: `Name: ${values.name}:
-Email: ${values.email}:
-Message: ${values.message}`,
-        }),
-      },
-    )
-      .then(() => form.reset())
-      .finally(() => setIsLoading(false));
+        body: JSON.stringify(values),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || data.success !== true) {
+        throw new Error("Failed to send message");
+      }
+
+      form.reset();
+      trackContactLead();
+    })();
 
     toast.promise(promise, {
       loading: t("loading"),
       success: t("successfully"),
       error: t("error"),
     });
+
+    try {
+      await promise;
+    } catch {
+      // Error notification is handled by toast.
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (

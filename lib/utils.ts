@@ -173,11 +173,11 @@ export function buildTelegramOrderUrl(opts: {
 	fullName?: string | null
 }) {
 	const lines = [
-		'Assalomu alaykum! Kursni sotib olmoqchiman.',
+		'Ассаламу алейкум! Я хочу купить этот курс.',
 		'',
-		`📚 Kurs: ${opts.courseTitle}`,
-		`💵 Narxi: ${opts.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}`,
-		...(opts.fullName ? [`👤 Ism: ${opts.fullName}`] : []),
+		`📚 Курс: ${opts.courseTitle}`,
+		`💵 Цена: ${opts.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}`,
+		...(opts.fullName ? [`👤 Имя: ${opts.fullName}`] : []),
 		`🔗 ${opts.courseUrl}`,
 	]
 

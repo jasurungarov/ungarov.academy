@@ -73,11 +73,13 @@ import FillLoading from "@/components/shared/fill-loading";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import useTranslate from "@/hooks/use-translate";
+import { trackCourseEvent } from "@/lib/analytics";
 import { formatLessonTime } from "@/lib/utils";
+import Player from "@vimeo/player";
 import { format } from "date-fns";
 import { Clock3, PauseCircle, Play, PlayCircle } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PiStudentBold } from "react-icons/pi";
 import ReactStars from "react-stars";
 import { toast } from "sonner";
@@ -103,8 +105,37 @@ function Hero(course: ICourse) {
   const [open, setOpen] = useState(false);
   const [lessons, setLessons] = useState<ILesson[]>([]);
   const [lesson, setLesson] = useState<ILesson | null>(null);
+  const [videoFrame, setVideoFrame] = useState<HTMLIFrameElement | null>(null);
 
   const t = useTranslate();
+
+  useEffect(() => {
+    if (!open || !videoFrame) return;
+
+    try {
+      const player = new Player(videoFrame);
+
+      let tracked = false;
+
+      const onPlaying = () => {
+        if (tracked) return;
+
+        tracked = trackCourseEvent("demo_video_play", {
+          _id: course._id,
+          title: course.title,
+          language: course.language,
+        });
+      };
+
+      player.on("playing", onPlaying);
+
+      return () => {
+        player.off("playing", onPlaying);
+      };
+    } catch {
+      // Analytics must not interrupt video playback.
+    }
+  }, [open, videoFrame, course._id, course.title, course.language]);
 
   const onHandler = async () => {
     if (lessons.length > 0) return setOpen(true);
@@ -196,6 +227,8 @@ function Hero(course: ICourse) {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="custom-scrollbar max-h-[100dvh] max-w-full gap-0 overflow-y-auto p-2 md:max-w-4xl [&>button]:z-10 [&>button]:rounded-full [&>button]:bg-black/50 [&>button]:p-1 [&>button]:text-white">
           <iframe
+            key={lesson?._id}
+            ref={setVideoFrame}
             src={getVimeoEmbedUrl(lesson?.videoUrl)}
             className="aspect-video w-full bg-black"
             allow="autoplay; fullscreen; picture-in-picture"

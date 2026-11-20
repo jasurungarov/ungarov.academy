@@ -46,7 +46,7 @@ function FeaturedCourses({ courses }: Props) {
           </p>
         </div>
 
-        <div className="flex items-center gap-1 self-end max-md:mt-4 max-md:w-full max-md:rounded-full max-md:p-1.5 ">
+        <div className="flex items-center gap-1 self-end max-md:mt-4 max-md:grid max-md:w-full max-md:min-w-0 max-md:grid-cols-2 max-md:gap-2">
           {filterCourses.map((item) => (
             <Button
               key={item.name}
@@ -55,6 +55,7 @@ function FeaturedCourses({ courses }: Props) {
               variant={item.name === "all" ? "secondary" : "ghost"}
               className={cn(
                 "liquid-glass-sm shrink-0 whitespace-nowrap px-2 text-xs font-medium sm:px-4 sm:text-sm",
+                "max-md:h-auto max-md:min-h-9 max-md:w-full max-md:min-w-0 max-md:whitespace-normal max-md:py-2 max-md:text-center max-md:leading-tight",
               )}
               onClick={() => onUpdateParams(item.name)}>
               {t(item.label)}

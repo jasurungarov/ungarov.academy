@@ -42,7 +42,7 @@ export default authMiddleware({
     "/:lng/privacy-policy",
   ],
 
-  ignoredRoutes: ["/en/api/webhook"],
+  ignoredRoutes: ["/en/api/webhook", "/:lng/api/contact"],
 });
 
 export const config = {

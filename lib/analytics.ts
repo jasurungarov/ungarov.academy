@@ -192,4 +192,112 @@ export function trackPageView(pathname: string) {
 
   lastPage = pagePath;
   previousPage = pageData.page_location;
+
+  const courseMatch = pagePath.match(
+    /^\/(en|uz|ky|ru|tr)\/course\/([a-f0-9]{24})$/i,
+  );
+
+  if (courseMatch) {
+    trackCourseEvent("course_view", {
+      _id: courseMatch[2],
+    });
+  }
+}
+
+type CourseEventName =
+  | "course_view"
+  | "demo_video_play"
+  | "telegram_click"
+  | "free_course_join_click";
+
+interface AnalyticsCourse {
+  _id: string;
+  title?: string;
+  language?: string;
+}
+
+export function trackCourseEvent(
+  eventName: CourseEventName,
+  course: AnalyticsCourse,
+): boolean {
+  if (
+    !isProduction() ||
+    !initialized ||
+    !active ||
+    getStoredConsent() !== "granted"
+  ) {
+    return false;
+  }
+
+  const pathname = window.location.pathname.replace(/\/+$/, "");
+
+  const match = pathname.match(/^\/(en|uz|ky|ru|tr)\/course\/([a-f0-9]{24})$/i);
+
+  if (
+    !match ||
+    lastPage !== pathname ||
+    match[2].toLowerCase() !== course._id.toLowerCase()
+  ) {
+    return false;
+  }
+
+  const gtag = getAnalyticsWindow().gtag;
+
+  if (!gtag) return false;
+
+  try {
+    gtag("event", eventName, {
+      course_id: course._id,
+      site_language: match[1],
+
+      ...(course.title && {
+        course_name: course.title.slice(0, 100),
+      }),
+
+      ...(course.language && {
+        course_language: course.language,
+      }),
+
+      send_to: GA_MEASUREMENT_ID,
+    });
+
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export function trackContactLead(): boolean {
+  if (
+    !isProduction() ||
+    !initialized ||
+    !active ||
+    getStoredConsent() !== "granted"
+  ) {
+    return false;
+  }
+
+  const pathname = window.location.pathname.replace(/\/+$/, "");
+
+  const match = pathname.match(/^\/(en|uz|ky|ru|tr)\/contacts$/);
+
+  if (!match || lastPage !== pathname) {
+    return false;
+  }
+
+  const gtag = getAnalyticsWindow().gtag;
+
+  if (!gtag) return false;
+
+  try {
+    gtag("event", "generate_lead", {
+      lead_source: "contact_form",
+      site_language: match[1],
+      send_to: GA_MEASUREMENT_ID,
+    });
+
+    return true;
+  } catch {
+    return false;
+  }
 }
