@@ -301,3 +301,39 @@ export function trackContactLead(): boolean {
     return false;
   }
 }
+
+export type AuthAnalyticsEvent = "login" | "sign_up";
+
+export function trackAuthEvent(eventName: AuthAnalyticsEvent): boolean {
+  if (
+    !isProduction() ||
+    !initialized ||
+    !active ||
+    getStoredConsent() !== "granted"
+  ) {
+    return false;
+  }
+
+  const pathname = window.location.pathname.replace(/\/+$/, "");
+
+  const match = pathname.match(/^\/(en|uz|ru|tr|ky)$/);
+
+  if (!match || lastPage !== pathname) {
+    return false;
+  }
+
+  const gtag = getAnalyticsWindow().gtag;
+
+  if (!gtag) return false;
+
+  try {
+    gtag("event", eventName, {
+      site_language: match[1],
+      send_to: GA_MEASUREMENT_ID,
+    });
+
+    return true;
+  } catch {
+    return false;
+  }
+}
