@@ -16,8 +16,9 @@ import { toast } from "sonner";
 import { z } from "zod";
 
 interface Props {
-  onHandler: (values: z.infer<typeof bioSchema>) => Promise<[void, void]>
+  onHandler: (values: z.infer<typeof bioSchema>) => Promise<void>;
 }
+
 function ThirdForm({ onHandler }: Props) {
   const t = useTranslate();
 
@@ -45,7 +46,7 @@ function ThirdForm({ onHandler }: Props) {
           render={({ field }) => (
             <FormItem>
               <FormLabel>
-                {t('yourJob')} <span className="text-red-500">*</span>
+                {t("yourJob")} <span className="text-red-500">*</span>
               </FormLabel>
               <FormControl>
                 <Input
@@ -63,13 +64,13 @@ function ThirdForm({ onHandler }: Props) {
           render={({ field }) => (
             <FormItem>
               <FormLabel>
-                {t('bio')} <span className="text-red-500">*</span>
+                {t("bio")} <span className="text-red-500">*</span>
               </FormLabel>
               <FormControl>
                 <Textarea
                   {...field}
                   className="h-32 resize-none bg-primary/10"
-                  placeholder={t('bioPlaceholder')} 
+                  placeholder={t("bioPlaceholder")}
                 />
               </FormControl>
             </FormItem>

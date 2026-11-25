@@ -1,31 +1,61 @@
-import mongoose, { ConnectOptions } from 'mongoose'
-import dns from 'dns'
+import dns from "dns";
+import mongoose, { ConnectOptions } from "mongoose";
 
-dns.setServers(['8.8.8.8', '8.8.4.4']) // <-- YANGI QATOR
+// Existing DNS configuration
+dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
-let isConnected: boolean = false
+let connectionPromise: Promise<typeof mongoose> | null = null;
 
 export const connectToDatabase = async () => {
-	mongoose.set('strictQuery', true)
+  const mongoUrl = process.env.MONGODB_URL;
+  const dbName = process.env.MONGODB_DB;
 
-	if (!process.env.MONGODB_URL) {
-		return console.log('MISSING MONGODB_URL')
-	}
+  // Validate environment variables
+  if (!mongoUrl) {
+    throw new Error("Missing MONGODB_URL environment variable");
+  }
 
-	if (isConnected) {
-		return
-	}
+  if (!dbName) {
+    throw new Error("Missing MONGODB_DB environment variable");
+  }
 
-	try {
-		const options: ConnectOptions = {
-			dbName: process.env.MONGODB_DB,
-			autoCreate: true,
-		}
+  mongoose.set("strictQuery", true);
 
-		await mongoose.connect(process.env.MONGODB_URL, options)
-		isConnected = true
-		console.log('MongoDB connected') // <-- muvaffaqiyatni ko'rish uchun (ixtiyoriy)
-	} catch (error) {
-		console.log('MongoDB connection failed', error)
-	}
-}
+  // Reuse an existing connection
+  if (mongoose.connection.readyState === 1) {
+    if (mongoose.connection.name !== dbName) {
+      throw new Error(
+        "MongoDB is connected to a different database. Restart the server.",
+      );
+    }
+
+    return;
+  }
+
+  // Prevent duplicate connection attempts
+  if (!connectionPromise) {
+    const options: ConnectOptions = {
+      dbName,
+      autoCreate: true,
+    };
+
+    connectionPromise = mongoose
+      .connect(mongoUrl, options)
+      .then((connection) => {
+        console.log(
+          `[MongoDB] Connected to database: ${connection.connection.name}`,
+        );
+
+        return connection;
+      })
+      .catch((error) => {
+        connectionPromise = null;
+
+        console.error("[MongoDB] Connection failed:", error);
+
+        throw error;
+      });
+  }
+
+  await connectionPromise;
+};

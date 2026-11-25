@@ -1,6 +1,5 @@
 "use client";
 
-import { sendNotification } from "@/actions/notification.action";
 import { updateUser } from "@/actions/user.action";
 import FillLoading from "@/components/shared/fill-loading";
 import { Button } from "@/components/ui/button";
@@ -50,7 +49,7 @@ function InstructorForm() {
         <p className="text-xs text-muted-foreground">
           {t("basicInformationDescription")}
         </p>
-        <FirstForm onHandler={onSubmit} />     
+        <FirstForm onHandler={onSubmit} />
       </>
     );
   };
@@ -85,16 +84,15 @@ function InstructorForm() {
     const onSubmit = async (values: z.infer<typeof bioSchema>) => {
       setLoading(true);
 
-      const upd = updateUser({
+      return updateUser({
         clerkId: userId!,
-        updatedData: { ...values, approvedInstructor: true },
+        updatedData: {
+          ...values,
+          approvedInstructor: true,
+        },
       })
         .then(() => setStep(4))
         .finally(() => setLoading(false));
-
-      const not = sendNotification(userId!, "messageInstructorApproved");
-
-      return Promise.all([upd, not]);
     };
 
     return (

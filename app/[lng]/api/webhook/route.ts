@@ -1,83 +1,161 @@
 /* eslint-disable camelcase */
-import { sendNotification } from '@/actions/notification.action'
-import { createUser, updateUser } from '@/actions/user.action'
-import { WebhookEvent } from '@clerk/nextjs/server'
-import { headers } from 'next/headers'
-import { NextResponse } from 'next/server'
-import { Webhook } from 'svix'
+import Notification from "@/database/notification.model";
+import User from "@/database/user.model";
+import { connectToDatabase } from "@/lib/mongoose";
+import { WebhookEvent } from "@clerk/nextjs/server";
+import { NextResponse } from "next/server";
+import { Webhook } from "svix";
 
 export async function POST(req: Request) {
-	const WEBHOOK_SECRET = process.env.NEXT_CLERK_WEBHOOK_SECRET
+  const secret = process.env.NEXT_CLERK_WEBHOOK_SECRET;
 
-	if (!WEBHOOK_SECRET) {
-		throw new Error(
-			'Please add WEBHOOK_SECRET from Clerk Dashboard to .env or .env.local'
-		)
-	}
+  if (!secret) {
+    console.error("Missing Clerk webhook secret");
 
-	const headerPayload = headers()
-	const svixId = headerPayload.get('svix-id')
-	const svixTimestamp = headerPayload.get('svix-timestamp')
-	const svixSignature = headerPayload.get('svix-signature')
+    return NextResponse.json(
+      { message: "Server configuration error" },
+      { status: 500 },
+    );
+  }
 
-	if (!svixId || !svixTimestamp || !svixSignature) {
-		return new Response('Error occured -- no svix headers', {
-			status: 400,
-		})
-	}
+  const svixId = req.headers.get("svix-id");
+  const svixTimestamp = req.headers.get("svix-timestamp");
+  const svixSignature = req.headers.get("svix-signature");
 
-	const payload = await req.json()
-	const body = JSON.stringify(payload)
+  if (!svixId || !svixTimestamp || !svixSignature) {
+    return NextResponse.json(
+      { message: "Missing webhook headers" },
+      { status: 400 },
+    );
+  }
 
-	const wh = new Webhook(WEBHOOK_SECRET)
+  const body = await req.text();
+  const webhook = new Webhook(secret);
 
-	let evt: WebhookEvent
+  let event: WebhookEvent;
 
-	try {
-		evt = wh.verify(body, {
-			'svix-id': svixId,
-			'svix-timestamp': svixTimestamp,
-			'svix-signature': svixSignature,
-		}) as WebhookEvent
-	} catch (err) {
-		console.error('Error verifying webhook:', err)
-		return new Response('Error occured', {
-			status: 400,
-		})
-	}
+  try {
+    event = webhook.verify(body, {
+      "svix-id": svixId,
+      "svix-timestamp": svixTimestamp,
+      "svix-signature": svixSignature,
+    }) as WebhookEvent;
+  } catch {
+    return NextResponse.json(
+      { message: "Invalid webhook signature" },
+      { status: 400 },
+    );
+  }
 
-	const eventType = evt.type
+  if (event.type !== "user.created" && event.type !== "user.updated") {
+    return NextResponse.json({ received: true });
+  }
 
-	if (eventType === 'user.created') {
-		const { id, email_addresses, image_url, first_name, last_name } = evt.data
+  const {
+    id,
+    email_addresses,
+    primary_email_address_id,
+    image_url,
+    first_name,
+    last_name,
+  } = event.data;
 
-		const user = await createUser({
-			clerkId: id,
-			email: email_addresses[0].email_address,
-			fullName: `${first_name} ${last_name}`,
-			picture: image_url,
-		})
+  const email = email_addresses.find(
+    (address) => address.id === primary_email_address_id,
+  )?.email_address;
 
-		await sendNotification(id, 'messageWelcome')
+  const fullName = [first_name, last_name].filter(Boolean).join(" ").trim();
 
-		return NextResponse.json({ message: 'OK', user })
-	}
+  if (!email) {
+    return NextResponse.json(
+      { message: "Primary email not found" },
+      { status: 422 },
+    );
+  }
 
-	if (eventType === 'user.updated') {
-		const { id, email_addresses, image_url, first_name, last_name } = evt.data
+  try {
+    await connectToDatabase();
 
-		const user = await updateUser({
-			clerkId: id,
-			updatedData: {
-				email: email_addresses[0].email_address,
-				fullName: `${first_name} ${last_name}`,
-				picture: image_url,
-			},
-			path: ''
-		})
+    const session = await User.db.startSession();
 
-		await sendNotification(id, 'messageProfileUpdated')
+    try {
+      await session.withTransaction(async () => {
+        const existingUser = await User.findOne({
+          clerkId: id,
+        }).session(session);
 
-		return NextResponse.json({ message: 'OK', user })
-	}
+        if (event.type === "user.created") {
+          if (existingUser) return;
+
+          await User.create(
+            [
+              {
+                clerkId: id,
+                email,
+                fullName: fullName || email.split("@")[0],
+                picture: image_url,
+              },
+            ],
+            { session },
+          );
+
+          await Notification.create(
+            [
+              {
+                user: id,
+                message: "messageWelcome",
+              },
+            ],
+            { session },
+          );
+
+          return;
+        }
+
+        if (!existingUser) {
+          throw new Error("User profile not found");
+        }
+
+        const updatedData = {
+          email,
+          fullName: fullName || existingUser.fullName,
+          picture: image_url,
+        };
+
+        const hasChanges =
+          existingUser.email !== updatedData.email ||
+          existingUser.fullName !== updatedData.fullName ||
+          existingUser.picture !== updatedData.picture;
+
+        if (!hasChanges) return;
+
+        await User.updateOne(
+          { clerkId: id },
+          { $set: updatedData },
+          { session, runValidators: true },
+        );
+
+        await Notification.create(
+          [
+            {
+              user: id,
+              message: "messageProfileUpdated",
+            },
+          ],
+          { session },
+        );
+      });
+    } finally {
+      await session.endSession();
+    }
+
+    return NextResponse.json({ received: true });
+  } catch (error) {
+    console.error("Clerk webhook processing failed:", error);
+
+    return NextResponse.json(
+      { message: "Webhook processing failed" },
+      { status: 500 },
+    );
+  }
 }
